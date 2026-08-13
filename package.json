@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx playwright test",
+    "regression": "npx playwright test"
   },
   "keywords": [],
   "type": "commonjs",
@@ -13,5 +14,8 @@
     "allure-commandline": "^2.43.0",
     "allure-playwright": "^3.10.2",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
   }
 }

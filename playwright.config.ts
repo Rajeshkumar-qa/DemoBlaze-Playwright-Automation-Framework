@@ -1,17 +1,18 @@
 import { defineConfig, devices } from '@playwright/test';
+import { env } from './utils/env';
 
 export default defineConfig({
 
     testDir: './tests',
 
-    workers: 1,
+    workers: 3,
 
     use: {
-        baseURL: 'https://www.demoblaze.com',
+        baseURL: env.baseURL,
         headless: true,
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
-        trace: 'on-first-retry',
+        trace: 'retain-on-failure',
     },
 
     reporter: [
@@ -22,9 +23,7 @@ export default defineConfig({
     projects: [
         {
             name: 'chromium',
-            use: {
-                ...devices['Desktop Chrome'],
-            },
+            use: { ...devices['Desktop Chrome'] },
         },
     ],
 });

@@ -1,10 +1,18 @@
 {
-    "validUser": {
-        "username": "Rajesh Kumar M",
-        "password": "rajesh"
-    },
-    "invalidUser": {
-        "username": "invalid_user_12345",
-        "password": "Invalid@123"
-    }
+  "validUser": {
+    "username": "Rajesh Kumar M",
+    "password": "rajesh"
+  },
+  "invalidUser": {
+    "username": "invalid_user_12345",
+    "password": "invalid_password"
+  },
+  "purchaseDetails": {
+    "name": "Rajesh Kumar",
+    "country": "India",
+    "city": "Trivandrum",
+    "creditCard": "1234567890987654",
+    "month": "08",
+    "year": "2026"
+  }
 }

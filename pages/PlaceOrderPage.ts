@@ -3,6 +3,7 @@ import { Page, Locator } from '@playwright/test';
 export class PlaceOrderPage {
 
     readonly page: Page;
+    readonly orderModal: Locator;
     readonly nameInput: Locator;
     readonly countryInput: Locator;
     readonly cityInput: Locator;
@@ -12,19 +13,17 @@ export class PlaceOrderPage {
     readonly purchaseButton: Locator;
 
     constructor(page: Page) {
-
         this.page = page;
+
+        this.orderModal = page.locator('#orderModal');
 
         this.nameInput = page.locator('#name');
         this.countryInput = page.locator('#country');
         this.cityInput = page.locator('#city');
         this.creditCardInput = page.locator('#card');
-        this.monthInput = page.locator('#month');
-        this.yearInput = page.locator('#year');
-
-        this.purchaseButton = page.getByRole('button', {
-            name: 'Purchase'
-        });
+        this.monthInput = page.getByRole('textbox', { name: 'Month:' });
+        this.yearInput = page.getByRole('textbox', { name: 'Year:' });
+        this.purchaseButton = page.getByRole('button', { name: 'Purchase' });
     }
 
     async enterOrderDetails(
@@ -35,7 +34,6 @@ export class PlaceOrderPage {
         month: string,
         year: string
     ) {
-
         await this.nameInput.fill(name);
         await this.countryInput.fill(country);
         await this.cityInput.fill(city);

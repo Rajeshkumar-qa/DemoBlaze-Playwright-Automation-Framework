@@ -6,14 +6,11 @@ export class ProductPage {
     readonly addToCartButton: Locator;
 
     constructor(page: Page) {
-
         this.page = page;
-
         this.addToCartButton = page.getByRole('link', {
             name: 'Add to cart'
         });
     }
-
     async addToCart() {
         await this.addToCartButton.click();
     }
