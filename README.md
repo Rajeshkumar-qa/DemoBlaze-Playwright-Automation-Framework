@@ -297,21 +297,6 @@ https://github.com/Rajeshkumar-qa
 LinkedIn:
 https://www.linkedin.com/in/rajesh-kumar--m/
 
-📌 Future Enhancements
-
-API automation
-
-Environment-based configuration
-
-Improved test data management
-
-Automated Allure report publishing
-
-Docker execution
-
-Scheduled regression execution
-
-Notifications for CI/CD failures
 
 ⭐ Project Highlights
 
