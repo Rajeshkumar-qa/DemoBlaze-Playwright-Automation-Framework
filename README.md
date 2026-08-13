@@ -1,270 +1,320 @@
 DemoBlaze Playwright Automation Framework
 
-A professional Playwright + TypeScript automation framework for testing the DemoBlaze e-commerce application.
+Playwright automation framework built with TypeScript using the Page Object Model (POM) design pattern.
 
-The framework is designed using the Page Object Model (POM) pattern and includes Allure reporting, reusable test data, and maintainable test automation practices.
+This project automates the DemoBlaze web application and covers user registration, login, product selection, cart, and purchase workflows.
 
-## 📌 Project Overview
+The framework also includes cross-browser testing, parallel execution, GitHub Actions CI/CD, and Allure reporting.
 
-This project automates key functional scenarios of the DemoBlaze application, including:
-
-User registration
-
-User login
-
-Negative login scenarios
-
-Product selection
-
-Add to cart
-
-Product purchase
-
-Logout
-
-Basic UI validations
-
-The framework focuses on readability, reusability, maintainability, and reliable test execution.
-
-## 🛠️ Tech Stack
-
-Technology
-
-Purpose
+🚀 Tech Stack
 
 Playwright
 
-Web UI automation
-
 TypeScript
 
-Programming language
-
 Node.js
 
-Runtime environment
+Page Object Model (POM)
 
-Allure
+Git & GitHub
 
-Test reporting
+GitHub Actions
 
-Page Object Model
+Allure Report
 
-Framework design pattern
+JSON Test Data
 
-JSON
+📌 Application Under Test
 
-Test data management
+DemoBlaze
 
-Git / GitHub
+https://www.demoblaze.com/
 
-Version control
+🧪 Test Scenarios
 
-## 🏗️ Framework Architecture
+Sign Up
 
-DemoBlaze-Playwright/
+TC01 - Sign Up with valid data
+
+TC02 - Sign Up and close the modal
+
+Login
+
+TC03 - Login with valid credentials
+
+TC04 - Login with invalid username and valid password
+
+TC05 - Login with valid username and invalid password
+
+TC06 - Login with invalid username and invalid password
+
+TC10 - Login with valid credentials and logout
+
+Cart & Purchase
+
+TC07 - Login and add product to cart
+
+TC08 - Purchase a phone
+
+TC09 - Purchase a monitor
+
+🏗️ Framework Architecture
+
+The framework follows the Page Object Model (POM) design pattern.
+
+DemoBlaze-Playwright-Automation-Framework
 │
-├── pages/
-│   ├── HomePage.ts
-│   ├── LoginPage.ts
-│   ├── PlaceOrderPage.ts
-│   ├── ProductPage.ts
-│   └── SignUpPage.ts
+├── .github
+│   └── workflows
+│       └── Playwright CI/CD workflow
 │
-├── tests/
-│   ├── demo.spec.ts
-│   ├── signup.spec.ts
-│   ├── login.spec.ts
-│   └── cart.spec.ts
-│
-├── test-data/
-│   └── users.json
-│
-├── utils/
-│   └── testData.ts
-│
-├── playwright.config.ts
-├── tsconfig.json
+├── pages
+├── test-data
+├── tests
+├── utils
+├── .gitignore
+├── README.md
 ├── package.json
 ├── package-lock.json
-├── .gitignore
-└── README.md
+├── playwright.config.ts
+└── tsconfig.json
 
-**Page Objects**
+📂 Project Structure
 
-Page classes contain locators and reusable actions for each application area.
+pages/
 
-**Tests**
+Contains Page Object classes with locators and reusable page actions.
 
-Test specifications contain the actual test scenarios and assertions.
+tests/
 
-**Test Data**
+Contains Playwright test specifications such as:
 
-Reusable credentials and test data are maintained separately from the test logic.
+login.spec.ts
+signup.spec.ts
+cart.spec.ts
 
-**Utilities**
+test-data/
 
-Common helper functions are maintained separately to avoid duplication.
+Contains test data used by the automation tests.
 
-## 🧪 Test Coverage
+Avoid committing real or sensitive credentials to a public repository.
 
-Test Case
+utils/
 
-Scenario
+Contains reusable helper functions and utilities.
 
-TC01        Sign Up with valid data
-TC02        Sign Up and close the modal
-TC03        Login with valid credentials
-TC04        Login with invalid username and valid password
-TC05        Login with valid username and invalid password
-TC06        Login with invalid username and invalid password
-TC07        Login and add product to cart
-TC08        Purchase a phone
-TC09        Purchase a monitor
-TC10        Login with valid credentials and logout
-
-**Current TypeScript suite: 10 automated tests — all passing.**
-
-## ⚙️ Prerequisites
-
-Make sure the following are installed:
-
-Node.js
-npm
-Git
-
-Verify the installations:
-
-node --version
-npm --version
-git --version
-
-## 🚀 Installation
+▶️ Installation
 
 Clone the repository:
 
-git clone <https://github.com/Rajeshkumar-qa/DemoBlaze-Playwright-Automation-Framework.git>
+git clone https://github.com/Rajeshkumar-qa/DemoBlaze-Playwright-Automation-Framework.git
 
-Navigate to the project: cd DemoBlaze-Playwright
+Navigate to the project:
 
-Install dependencies: npm install
+cd DemoBlaze-Playwright-Automation-Framework
 
-Install Playwright browsers if required: npx playwright install
+Install dependencies:
 
-## ▶️ Running Tests
+npm install
 
-**Run all tests**
+Install Playwright browsers:
+
+npx playwright install
+
+🧪 Running Tests
+
+Run all tests
 
 npx playwright test
 
-**Run tests in headed mode**
+Run tests in headed mode
 
 npx playwright test --headed
 
-**Run a specific test file**
+Run a specific test file
 
 npx playwright test tests/login.spec.ts
 
-**Run a specific test case**
+Run a specific test
 
-npx playwright test --grep "TC03"
+npx playwright test -g "TC03 - Login with valid credentials"
 
-**Run using the Playwright configuration**
+🌐 Cross-Browser Testing
 
-npx playwright test --config=playwright.config.ts
+The framework supports:
 
-## 📊 Allure Reporting
+Chromium
 
-This project uses **Allure** for detailed test reporting.
+Firefox
 
-**Generate the Allure report**
+WebKit
 
-npx allure generate allure-results --clean
+npx playwright test --project=chromium
+npx playwright test --project=firefox
+npx playwright test --project=webkit
 
-**Open the report**
+⚡ Parallel Execution
+
+Playwright supports parallel test execution using multiple workers.
+
+Example:
+
+npx playwright test --workers=3
+
+Parallel execution helps reduce overall test execution time.
+
+📊 Allure Reporting
+
+This project uses Allure Report for test execution reporting.
+
+Generate Allure Report
+
+npx allure generate allure-results --clean -o allure-report
+
+Open Allure Report
 
 npx allure open allure-report
 
 The Allure report provides:
 
 Test execution status
-Test steps
+
+Passed and failed tests
+
 Test duration
-Failed test details
+
+Browser information
+
+Test suites
+
+Test steps
+
 Screenshots
+
 Videos
-Error information
-Test categorization
 
-Generated report folders are intentionally excluded from Git using .gitignore.
+Trace information
 
-## 🧩 Page Object Model
+🔄 CI/CD with GitHub Actions
 
-The framework follows the Page Object Model (POM) design pattern.
+GitHub Actions is configured to automatically execute the Playwright test suite when changes are pushed to the repository.
 
-For example:
+CI/CD Flow
 
-LoginPage.ts
+Developer
     ↓
-Locators
+Git Push
     ↓
-Reusable login methods
+GitHub Repository
     ↓
-Test specification
+GitHub Actions
+    ↓
+Install Dependencies
+    ↓
+Install Playwright Browsers
+    ↓
+Run Playwright Tests
+    ↓
+Generate Allure Report
+    ↓
+Publish Test Results
 
-This approach helps:
+🔍 Test Execution Evidence
 
-Reduce duplicate code
-Centralize locators
-Improve maintainability
-Improve test readability
-Make application changes easier to manage
+Playwright generates:
 
-## 🔍 Testing Practices Demonstrated
+HTML reports
 
-This project demonstrates practical QA automation concepts including:
+Screenshots
 
-Functional testing
-Positive testing
-Negative testing
-UI validation
-Authentication testing
-E-commerce workflow testing
-Cart validation
-End-to-end testing
-Page Object Model
-Test data separation
-Reusable methods
-Assertions
-JavaScript dialog handling
-Allure test reporting
+Videos
 
-## 📁 Git Ignore
+Traces
 
-The following generated or local files are excluded from version control:
+Open the Playwright HTML report:
 
-node_modules/
-test-results/
-playwright-report/
-blob-report/
-allure-results/
-allure-report/
-.env
-.vscode/
+npx playwright show-report
 
-## 🎯 Future Enhancements
+🧩 Key Framework Features
 
-Potential improvements for the framework include:
+✅ TypeScript
 
-GitHub Actions CI/CD integration
-Cross-browser execution
-Parallel execution optimization
-Environment-based configuration
-Additional API testing
-Improved test data management
-Retry and trace configuration
-Automated Allure report publishing
+✅ Playwright
 
-##👨‍💻 Author
+✅ Page Object Model
+
+✅ Reusable page methods
+
+✅ Data-driven testing
+
+✅ Functional testing
+
+✅ Positive and negative test scenarios
+
+✅ Cross-browser testing
+
+✅ Parallel test execution
+
+✅ Git version control
+
+✅ GitHub Actions CI/CD
+
+✅ Allure reporting
+
+✅ Screenshots on test failure
+
+✅ Video recording
+
+✅ Playwright trace
+
+✅ HTML test reports
+
+🎯 Testing Approach
+
+Functional Testing
+
+Positive Testing
+
+Negative Testing
+
+Regression Testing
+
+Smoke Testing
+
+End-to-End Testing
+
+Cross-Browser Testing
+
+👨‍💻 Author
 
 Rajesh Kumar M
+
+QA Automation Engineer
+
+GitHub:
+https://github.com/Rajeshkumar-qa
+
+LinkedIn:
+https://www.linkedin.com/in/rajesh-kumar--m/
+
+📌 Future Enhancements
+
+API automation
+
+Environment-based configuration
+
+Improved test data management
+
+Automated Allure report publishing
+
+Docker execution
+
+Scheduled regression execution
+
+Notifications for CI/CD failures
+
+⭐ Project Highlights
+
+This project demonstrates practical experience in building a maintainable Playwright automation framework using:
+
+Playwright + TypeScript + POM + Cross-Browser Testing + Parallel Execution + GitHub Actions CI/CD + Allure Reporting
