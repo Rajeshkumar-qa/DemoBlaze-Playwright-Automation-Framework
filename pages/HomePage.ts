@@ -25,17 +25,16 @@ export class HomePage {
     }
 
     async selectProduct(productName: string) {
-        const product = this.page.getByRole('link', {
-            name: productName,
-            exact: true
-        }).first();
+    const product = this.page.getByText(productName, {
+        exact: true
+    }).first();
 
-        await product.waitFor({
-            state: 'visible',
-            timeout: 15000
-        });
+    await product.waitFor({
+        state: 'visible',
+        timeout: 15000
+    });
 
-        await product.click();
+    await product.click();
     }
 
     async selectPhonesCategory() {
@@ -53,8 +52,10 @@ export class HomePage {
     }
 
     async selectMonitorsCategory() {
-        await this.monitorsCategory.click();
-    }
+    await this.monitorsCategory.click();
+
+    await this.page.waitForTimeout(1000);
+    }  
 
     async openCart() {
         await this.cartLink.click();

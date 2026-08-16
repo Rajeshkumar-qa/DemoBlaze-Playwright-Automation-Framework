@@ -11,6 +11,7 @@ export class PlaceOrderPage {
     readonly monthInput: Locator;
     readonly yearInput: Locator;
     readonly purchaseButton: Locator;
+    readonly successMessage: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -21,9 +22,23 @@ export class PlaceOrderPage {
         this.countryInput = page.locator('#country');
         this.cityInput = page.locator('#city');
         this.creditCardInput = page.locator('#card');
-        this.monthInput = page.getByRole('textbox', { name: 'Month:' });
-        this.yearInput = page.getByRole('textbox', { name: 'Year:' });
-        this.purchaseButton = page.getByRole('button', { name: 'Purchase' });
+
+        this.monthInput = page.getByRole('textbox', {
+            name: 'Month:'
+        });
+
+        this.yearInput = page.getByRole('textbox', {
+            name: 'Year:'
+        });
+
+        this.purchaseButton = page.getByRole('button', {
+            name: 'Purchase'
+        });
+
+        this.successMessage = page.getByText(
+            'Thank you for your purchase!',
+            { exact: true }
+        );
     }
 
     async enterOrderDetails(

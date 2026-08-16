@@ -1,12 +1,13 @@
-DemoBlaze Playwright Automation Framework
+## DemoBlaze Playwright Automation Framework
 
 Playwright automation framework built with TypeScript using the Page Object Model (POM) design pattern.
 
 This project automates the DemoBlaze web application and covers user registration, login, product selection, cart, and purchase workflows.
 
 The framework also includes cross-browser testing, parallel execution, GitHub Actions CI/CD, and Allure reporting.
+---
 
-🚀 Tech Stack
+## 🚀 Tech Stack
 
 Playwright
 
@@ -23,22 +24,23 @@ GitHub Actions
 Allure Report
 
 JSON Test Data
+---
 
-📌 Application Under Test
+## 📌 Application Under Test
 
 DemoBlaze
 
 https://www.demoblaze.com/
+---
+## 🧪 Test Scenarios
 
-🧪 Test Scenarios
-
-Sign Up
+**Sign Up**
 
 TC01 - Sign Up with valid data
 
 TC02 - Sign Up and close the modal
 
-Login
+**Login**
 
 TC03 - Login with valid credentials
 
@@ -50,15 +52,16 @@ TC06 - Login with invalid username and invalid password
 
 TC10 - Login with valid credentials and logout
 
-Cart & Purchase
+**Cart & Purchase**
 
 TC07 - Login and add product to cart
 
 TC08 - Purchase a phone
 
 TC09 - Purchase a monitor
+---
 
-🏗️ Framework Architecture
+## 🏗️ Framework Architecture
 
 The framework follows the Page Object Model (POM) design pattern.
 
@@ -78,8 +81,9 @@ DemoBlaze-Playwright-Automation-Framework
 ├── package-lock.json
 ├── playwright.config.ts
 └── tsconfig.json
+---
 
-📂 Project Structure
+## 📂 Project Structure
 
 pages/
 
@@ -102,8 +106,9 @@ Avoid committing real or sensitive credentials to a public repository.
 utils/
 
 Contains reusable helper functions and utilities.
+---
 
-▶️ Installation
+## ▶️ Installation
 
 Clone the repository:
 
@@ -120,8 +125,9 @@ npm install
 Install Playwright browsers:
 
 npx playwright install
+---
 
-🧪 Running Tests
+## 🧪 Running Tests
 
 Run all tests
 
@@ -138,8 +144,9 @@ npx playwright test tests/login.spec.ts
 Run a specific test
 
 npx playwright test -g "TC03 - Login with valid credentials"
+---
 
-🌐 Cross-Browser Testing
+## 🌐 Cross-Browser Testing
 
 The framework supports:
 
@@ -152,8 +159,9 @@ WebKit
 npx playwright test --project=chromium
 npx playwright test --project=firefox
 npx playwright test --project=webkit
+---
 
-⚡ Parallel Execution
+## ⚡ Parallel Execution
 
 Playwright supports parallel test execution using multiple workers.
 
@@ -162,8 +170,9 @@ Example:
 npx playwright test --workers=3
 
 Parallel execution helps reduce overall test execution time.
+---
 
-📊 Allure Reporting
+## 📊 Allure Reporting
 
 This project uses Allure Report for test execution reporting.
 
@@ -194,8 +203,9 @@ Screenshots
 Videos
 
 Trace information
+---
 
-🔄 CI/CD with GitHub Actions
+## 🔄 CI/CD with GitHub Actions
 
 GitHub Actions is configured to automatically execute the Playwright test suite when changes are pushed to the repository.
 
@@ -218,8 +228,9 @@ Run Playwright Tests
 Generate Allure Report
     ↓
 Publish Test Results
+---
 
-🔍 Test Execution Evidence
+## 🔍 Test Execution Evidence
 
 Playwright generates:
 
@@ -234,8 +245,9 @@ Traces
 Open the Playwright HTML report:
 
 npx playwright show-report
+---
 
-🧩 Key Framework Features
+## 🧩 Key Framework Features
 
 ✅ TypeScript
 
@@ -268,8 +280,9 @@ npx playwright show-report
 ✅ Playwright trace
 
 ✅ HTML test reports
+---
 
-🎯 Testing Approach
+## 🎯 Testing Approach
 
 Functional Testing
 
@@ -284,12 +297,12 @@ Smoke Testing
 End-to-End Testing
 
 Cross-Browser Testing
+---
 
-👨‍💻 Author
+## 👨‍💻 Author
 
 Rajesh Kumar M
 
-QA Automation Engineer
 
 GitHub:
 https://github.com/Rajeshkumar-qa
@@ -298,7 +311,7 @@ LinkedIn:
 https://www.linkedin.com/in/rajesh-kumar--m/
 
 
-⭐ Project Highlights
+## ⭐ Project Highlights
 
 This project demonstrates practical experience in building a maintainable Playwright automation framework using:
 
