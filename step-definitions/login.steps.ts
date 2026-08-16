@@ -1,6 +1,7 @@
 import { Given, When, Then, setDefaultTimeout } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { CustomWorld } from '../support/world';
+import 'dotenv/config';
 
 setDefaultTimeout(30000);
 
@@ -10,8 +11,8 @@ Given('I am on the DemoBlaze home page', async function (this: CustomWorld) {
 
 When('I login with valid credentials', async function (this: CustomWorld) {
     await this.loginPage.login(
-        'Rajesh Kumar M',
-        'rajesh'
+        process.env.USERNAME!,
+        process.env.PASSWORD!
     );
 });
 
