@@ -9,21 +9,16 @@ The framework also includes cross-browser testing, parallel execution, GitHub Ac
 
 ## 🚀 Tech Stack
 
-Playwright
-
-TypeScript
-
-Node.js
-
-Page Object Model (POM)
-
-Git & GitHub
-
-GitHub Actions
-
-Allure Report
-
-JSON Test Data
+**Playwright** – UI automation
+**TypeScript** – Programming language
+**Cucumber BDD** – Behavior-driven testing
+**Gherkin** – Feature/scenario definition
+**Page Object Model (POM)** – Framework design pattern
+**Allure** – Test reporting
+**Cucumber HTML Report** – BDD test reporting
+**Git & GitHub** – Version control
+**GitHub Actions** – CI/CD
+**dotenv** – Environment/configuration management
 ---
 
 ## 📌 Application Under Test
@@ -32,6 +27,55 @@ DemoBlaze
 
 https://www.demoblaze.com/
 ---
+
+## 📂 Project Structure
+
+The framework follows the Page Object Model (POM) design pattern.
+
+DemoBlaze-Playwright/ 
+│ 
+├── .github/ 
+│   └── workflows/ 
+│       ├── playwright.yml 
+│       └── cucumber.yml 
+│ 
+├── features/ 
+│       ├── login.feature 
+│       ├── signup.feature 
+│       └── cart.feature 
+│ 
+├── step-definitions/ 
+│       ├── login.steps.ts 
+│       ├── signup.steps.ts 
+│       └── cart.steps.ts 
+│ 
+├── support/ 
+│       ├── hooks.ts 
+│       └── world.ts 
+│ 
+├── pages/ 
+│       ├── HomePage.ts 
+│       ├── LoginPage.ts 
+│       ├── ProductPage.ts 
+│       ├── PlaceOrderPage.ts 
+│       └── SignUpPage.ts 
+│ 
+├── tests/ 
+│       └── signup.spec.ts 
+│       
+├── test-data/ 
+│ 
+├── utils/ 
+│       
+├── playwright.config.ts 
+├── tsconfig.json 
+├── package.json 
+├── package-lock.json 
+├── .env 
+├── .gitignore 
+└── README.md
+---
+
 ## 🧪 Test Scenarios
 
 **Sign Up**
@@ -61,104 +105,168 @@ TC08 - Purchase a phone
 TC09 - Purchase a monitor
 ---
 
-## 🏗️ Framework Architecture
+## 🏗️ Framework Design
 
 The framework follows the Page Object Model (POM) design pattern.
 
-DemoBlaze-Playwright-Automation-Framework
-│
-├── .github
-│   └── workflows
-│       └── Playwright CI/CD workflow
-│
-├── pages
-├── test-data
-├── tests
-├── utils
-├── .gitignore
-├── README.md
-├── package.json
-├── package-lock.json
-├── playwright.config.ts
-└── tsconfig.json
+Each application page has a separate Page Object class containing:
+
+Locators
+Page actions
+Reusable methods
+
+Example:
+
+LoginPage.ts
+HomePage.ts
+ProductPage.ts
+PlaceOrderPage.ts
+SignUpPage.ts
+
+Cucumber step definitions call the Page Object methods instead of directly interacting with page locators.
 ---
 
-## 📂 Project Structure
+## 🥒 Cucumber BDD
 
-pages/
+The framework uses Cucumber to implement BDD-style tests.
 
-Contains Page Object classes with locators and reusable page actions.
+Example feature:
 
-tests/
+Feature: Login
 
-Contains Playwright test specifications such as:
+  Scenario: Login with valid credentials
+    Given I am on the DemoBlaze home page
+    When I login with valid credentials
+    Then I should be logged in successfully
 
-login.spec.ts
-signup.spec.ts
-cart.spec.ts
+The Gherkin steps are implemented in TypeScript step-definition files.
+---
 
-test-data/
+## 🌍 Environment Configuration
 
-Contains test data used by the automation tests.
+Test credentials and environment-specific values are stored using environment variables.
 
-Avoid committing real or sensitive credentials to a public repository.
+Example .env:
 
-utils/
+USERNAME=your_username
+PASSWORD=your_password
 
-Contains reusable helper functions and utilities.
+The .env file is excluded from Git using .gitignore to prevent credentials from being committed to the repository.
 ---
 
 ## ▶️ Installation
 
-Clone the repository:
+**Clone the repository:**
 
 git clone https://github.com/Rajeshkumar-qa/DemoBlaze-Playwright-Automation-Framework.git
 
-Navigate to the project:
+**Navigate to the project:**
 
 cd DemoBlaze-Playwright-Automation-Framework
 
-Install dependencies:
+**Install dependencies:**
 
-npm install
+npm ci
 
-Install Playwright browsers:
+**Install Playwright browsers:**
 
 npx playwright install
 ---
 
 ## 🧪 Running Tests
 
-Run all tests
+**Run all tests**
 
 npx playwright test
 
-Run tests in headed mode
+**Run tests in headed mode**
 
 npx playwright test --headed
 
-Run a specific test file
+**Run a specific test file**
 
 npx playwright test tests/login.spec.ts
 
-Run a specific test
+**Run a specific test**
 
 npx playwright test -g "TC03 - Login with valid credentials"
+
+**Run the complete Cucumber suite:**
+
+npm run cucumber
+
+**The current Cucumber suite contains:**
+
+6 scenarios
+51 steps
+
+All scenarios are passing.
 ---
 
-## 🌐 Cross-Browser Testing
+## 📊 Cucumber HTML Report
 
-The framework supports:
+The Cucumber execution generates an HTML report.
 
-Chromium
+The report can be opened after execution to review:
 
-Firefox
+Passed scenarios
+Failed scenarios
+Step execution
+Execution duration
+---
 
-WebKit
+## 📈 Allure Reporting
 
-npx playwright test --project=chromium
-npx playwright test --project=firefox
-npx playwright test --project=webkit
+**Generate Allure results:**
+
+npx allure generate allure-results --clean -o allure-report
+
+**Open the Allure report:**
+
+npx allure open allure-report
+
+**The Allure report provides detailed information about:**
+
+Test execution
+Test status
+Steps
+Execution time
+Failures
+Test history
+---
+
+## 🔄 GitHub Actions CI/CD
+
+The project is integrated with GitHub Actions.
+
+Workflows are located under:
+
+.github/workflows/
+
+**Playwright CI**
+
+The Playwright workflow:
+
+Checks out the repository
+Sets up Node.js
+Installs dependencies
+Installs Playwright browsers
+Executes Playwright tests
+Uploads test results/reports
+
+**Cucumber CI**
+
+The Cucumber workflow:
+
+Checks out the repository
+Sets up Node.js 24
+Installs dependencies
+Installs Playwright browsers
+Executes Cucumber tests
+Generates the Cucumber HTML report
+Uploads Cucumber and Allure results
+
+The workflows can be viewed under the **Actions** tab of the GitHub repository.
 ---
 
 ## ⚡ Parallel Execution
@@ -172,67 +280,57 @@ npx playwright test --workers=3
 Parallel execution helps reduce overall test execution time.
 ---
 
-## 📊 Allure Reporting
+## 🔐 Security
 
-This project uses Allure Report for test execution reporting.
+Sensitive information such as usernames and passwords should not be committed to GitHub.
 
-Generate Allure Report
+Use:
+
+.env
+
+for local credentials and add it to:
+
+.gitignore
+
+For GitHub Actions, sensitive credentials should be stored using GitHub Secrets.
+---
+
+## 🧹 Useful Commands
+
+**Install dependencies:**
+
+npm ci
+
+**Run Playwright tests:**
+
+npx playwright test
+
+**Run Cucumber tests:**
+
+npm run cucumber
+
+**Generate Allure report:**
 
 npx allure generate allure-results --clean -o allure-report
 
-Open Allure Report
+**Open Allure report:**
 
 npx allure open allure-report
 
-The Allure report provides:
+**Check Git status:**
 
-Test execution status
+git status
 
-Passed and failed tests
+**Commit changes:**
 
-Test duration
-
-Browser information
-
-Test suites
-
-Test steps
-
-Screenshots
-
-Videos
-
-Trace information
+git add .
+git commit -m "Update automation framework"
+git push origin main
 ---
 
-## 🔄 CI/CD with GitHub Actions
+## 🔍 Playwright Reporting
 
-GitHub Actions is configured to automatically execute the Playwright test suite when changes are pushed to the repository.
-
-CI/CD Flow
-
-Developer
-    ↓
-Git Push
-    ↓
-GitHub Repository
-    ↓
-GitHub Actions
-    ↓
-Install Dependencies
-    ↓
-Install Playwright Browsers
-    ↓
-Run Playwright Tests
-    ↓
-Generate Allure Report
-    ↓
-Publish Test Results
----
-
-## 🔍 Test Execution Evidence
-
-Playwright generates:
+**Playwright generates:**
 
 HTML reports
 
@@ -242,44 +340,28 @@ Videos
 
 Traces
 
-Open the Playwright HTML report:
+**Open the Playwright HTML report:**
 
 npx playwright show-report
 ---
 
 ## 🧩 Key Framework Features
 
+✅ Playwright automation
 ✅ TypeScript
-
-✅ Playwright
-
 ✅ Page Object Model
-
-✅ Reusable page methods
-
-✅ Data-driven testing
-
-✅ Functional testing
-
-✅ Positive and negative test scenarios
-
-✅ Cross-browser testing
-
-✅ Parallel test execution
-
-✅ Git version control
-
-✅ GitHub Actions CI/CD
-
+✅ Cucumber BDD
+✅ Gherkin feature files
+✅ Reusable step definitions
+✅ Custom Cucumber World
+✅ Cucumber hooks
+✅ Environment-based configuration
+✅ Cucumber HTML reporting
 ✅ Allure reporting
-
-✅ Screenshots on test failure
-
-✅ Video recording
-
-✅ Playwright trace
-
-✅ HTML test reports
+✅ GitHub Actions CI/CD
+✅ Parallel Playwright execution
+✅ Cross-browser automation capability
+✅ Git/GitHub integration
 ---
 
 ## 🎯 Testing Approach
@@ -309,10 +391,3 @@ https://github.com/Rajeshkumar-qa
 
 LinkedIn:
 https://www.linkedin.com/in/rajesh-kumar--m/
-
-
-## ⭐ Project Highlights
-
-This project demonstrates practical experience in building a maintainable Playwright automation framework using:
-
-Playwright + TypeScript + POM + Cross-Browser Testing + Parallel Execution + GitHub Actions CI/CD + Allure Reporting

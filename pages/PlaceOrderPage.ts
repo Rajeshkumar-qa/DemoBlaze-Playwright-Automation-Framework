@@ -12,35 +12,27 @@ export class PlaceOrderPage {
     readonly yearInput: Locator;
     readonly purchaseButton: Locator;
     readonly successMessage: Locator;
-
-    constructor(page: Page) {
+    constructor(page: Page){
         this.page = page;
-
         this.orderModal = page.locator('#orderModal');
-
         this.nameInput = page.locator('#name');
         this.countryInput = page.locator('#country');
         this.cityInput = page.locator('#city');
         this.creditCardInput = page.locator('#card');
-
         this.monthInput = page.getByRole('textbox', {
             name: 'Month:'
         });
-
         this.yearInput = page.getByRole('textbox', {
             name: 'Year:'
         });
-
         this.purchaseButton = page.getByRole('button', {
             name: 'Purchase'
         });
-
         this.successMessage = page.getByText(
             'Thank you for your purchase!',
             { exact: true }
         );
     }
-
     async enterOrderDetails(
         name: string,
         country: string,
@@ -48,7 +40,7 @@ export class PlaceOrderPage {
         creditCard: string,
         month: string,
         year: string
-    ) {
+    ){
         await this.nameInput.fill(name);
         await this.countryInput.fill(country);
         await this.cityInput.fill(city);
@@ -56,7 +48,6 @@ export class PlaceOrderPage {
         await this.monthInput.fill(month);
         await this.yearInput.fill(year);
     }
-
     async clickPurchase() {
         await this.purchaseButton.click();
     }

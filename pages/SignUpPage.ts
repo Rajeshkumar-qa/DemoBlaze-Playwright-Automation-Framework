@@ -1,14 +1,12 @@
 import { Page, Locator } from '@playwright/test';
 
 export class SignUpPage {
-
     readonly page: Page;
     readonly signUpLink: Locator;
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
     readonly signUpButton: Locator;
     readonly closeButton: Locator;
-
     constructor(page: Page) {
         this.page = page;
         this.signUpLink = page.getByRole('link', { name: 'Sign up' });
